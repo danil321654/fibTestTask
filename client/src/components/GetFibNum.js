@@ -13,7 +13,7 @@ function GetFibNum() {
           n: num
         }
       })
-      .then(resp => getRes(resp.data));
+      .then(resp => getRes(JSON.parse(resp.data)));
   };
   return (
     <React.Fragment>
@@ -22,8 +22,12 @@ function GetFibNum() {
           type="number"
           min="1"
           max="100"
-          placeholder={num}
-          onChange={e => setNum(e.currentTarget.value)}
+          value={num}
+          onChange={e =>
+            e.currentTarget.value <= 100 && e.currentTarget.value >= 1
+              ? setNum(e.currentTarget.value)
+              : setNum(100)
+          }
         />{" "}
         <Button onClick={getNum}>get</Button>
       </form>

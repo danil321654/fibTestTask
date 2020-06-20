@@ -1,22 +1,13 @@
-var express = require("express");
-const nodemon = require("nodemon");
+const express = require("express");
+const fibCalc = require("./routes/fibCalc");
 
 var app = express();
 
-app.get("/fib", function(req, res) {
-  let k = 1,
-    s = 1;
-  let n = +req.query.n;
 
-  for (let i = 0; i < n - 1; i++) {
-    let temp = s;
-    s += k;
-    k = temp;
-  }
-  console.log(req);
-  res.send(k.toString());
-  //  process.exit();
-});
+
+ 
+
+app.use("/fib", fibCalc);
 app.get("/history", function(req, res) {
   res.send("History");
 });
