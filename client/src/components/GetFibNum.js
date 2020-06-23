@@ -4,7 +4,7 @@ import {Button} from "@material-ui/core";
 import axios from "axios";
 
 function GetFibNum() {
-  const [res, getRes] = useState(0);
+  const [res, getRes] = useState(1);
   const [num, setNum] = useState(1);
   const getNum = e => {
     axios
