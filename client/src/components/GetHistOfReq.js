@@ -3,27 +3,28 @@ import {Link} from "react-router-dom";
 import {Button} from "@material-ui/core";
 import ReqCard from "./ReqCard.js";
 import axios from "axios";
-import {createUseStyles} from "react-jss";
+import {useStyles} from "./styles.js";
 
 function GetHistOfReq() {
   const [reqs, getReqs] = useState([]);
-  const getRequests = e => {
-    axios.get("/history").then(resp => getReqs(resp.data));
-  };
+  const classes = useStyles();
+  axios.get("/history").then(resp => getReqs(resp.data));
   return (
-    <React.Fragment>
-      <div className={"style.container"}>
+    <div className={classes.wrapper}>
+      <div className={classes.cards}>
         {reqs.map(el => (
           <ReqCard
             num={JSON.parse(el.number)}
             fibNum={JSON.parse(el.fibNumber)}
-            date={Date.parse(el.date)}
+            date={el.date}
           />
         ))}
       </div>
-      <Button onClick={getRequests}>get</Button>
-      <Link to="/Fibbonnacci"> get num </Link>
-    </React.Fragment>
+      <Link className={classes.linkToPage} to="/Fibbonnacci">
+        {" "}
+        get num{" "}
+      </Link>
+    </div>
   );
 }
 

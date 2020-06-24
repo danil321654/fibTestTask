@@ -1,13 +1,19 @@
 import React from "react";
-import {createUseStyles} from "react-jss";
+import {useStyles} from "./styles.js";
 
 function ReqCard(props) {
+  const classes = useStyles();
   return (
-    <React.Fragment>
-      <div className={"style.container"}>
-        {props.num} ' - ' {props.fibNum} ' - ' {props.date}
+    <div className={classes.card}>
+      <div className={classes.cardText}>requested num - {props.num} </div>
+      <div className={classes.cardText}>result - {props.fibNum} </div>
+      <div className={classes.date}>
+        {(() => {
+          let date = new Date(Date.parse(props.date));
+          return date.toDateString();
+        })()}
       </div>
-    </React.Fragment>
+    </div>
   );
 }
 

@@ -1,5 +1,4 @@
 const express = require("express");
-const getNFibNum = require("./../logics/getNFibNum");
 const router = express.Router();
 const connection = require("./../config/mysql-config.js");
 
