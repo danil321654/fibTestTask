@@ -1,25 +1,41 @@
 {
   "name": "fibtesttask",
   "version": "1.0.0",
+  "jest": {
+    "modulePathIgnorePatterns": [
+      "<rootDir>/client/"
+    ]
+  },
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "dev:server": "nodemon index.js",
-    "dev:client": "npm start --prefix client",
-    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\""
+    "dev:client": "./client/ npm start",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@mysql/xdevapi": "8.0.20",
+    "@types/jest": "^26.0.13",
+    "@types/mongoose": "^5.7.36",
+    "@types/node": "^14.10.1",
+    "@types/react": "^16.9.49",
+    "@types/react-dom": "^16.9.8",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "mongoose": "^5.10.4",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.4",
     "react-jss": "^10.3.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "typescript": "^4.0.2"
+  },
+  "devDependencies": {
+    "jest": "^26.1.0"
   }
 }

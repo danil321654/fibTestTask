@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import {Link} from "react-router-dom";
-import {Button} from "@material-ui/core";
 import ReqCard from "./ReqCard.js";
 import axios from "axios";
 import {useStyles} from "./styles.js";
@@ -8,15 +7,22 @@ import {useStyles} from "./styles.js";
 function GetHistOfReq() {
   const [reqs, getReqs] = useState([]);
   const classes = useStyles();
-  axios.get("/history").then(resp => getReqs(resp.data));
+  axios
+    .get("/history")
+    .then(resp => {
+      console.log(resp.data);
+      getReqs(resp.data);
+    })
+    .catch(err => console.log(err));
+  console.log("history");
   return (
     <div className={classes.wrapper}>
       <div className={classes.cards}>
         {reqs.map(el => (
           <ReqCard
-            num={JSON.parse(el.number)}
-            fibNum={JSON.parse(el.fibNumber)}
-            date={el.date}
+            num={el.originNum}
+            fibNum={el.resultNum}
+            date={el.requestedDate}
           />
         ))}
       </div>

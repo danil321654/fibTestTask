@@ -17,7 +17,11 @@ function GetFibNum() {
             n: num
           }
         })
-        .then(resp => getRes(JSON.parse(resp.data)));
+        .then(resp => {
+          console.log(resp.data);
+          getRes(resp.data);
+        })
+        .catch(err => console.log(err));
   };
   return (
     <div className={classes.wrapper}>
